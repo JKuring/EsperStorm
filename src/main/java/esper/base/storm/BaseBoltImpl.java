@@ -7,6 +7,7 @@ import org.apache.storm.task.TopologyContext;
 import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.topology.base.BaseRichBolt;
 import org.apache.storm.tuple.Tuple;
+import org.apache.storm.tuple.Values;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,9 +56,18 @@ public abstract class BaseBoltImpl<T> extends BaseRichBolt implements BaseBolt  
 
     @Override
     public void execute(Tuple input) {
+        if (!this.newEventsList.isEmpty()) {
+            collector.emit(new Values(this.newEventsList));
+            this.newEventsList.clear();
+        }
         Map spoutTuple= (Map) input.getValueByField(spoutTupleName);
         if (spoutTuple != null) {
             epRuntime.sendEvent(spoutTuple,this.eventName);
+        }
+        // 担心线程处理没有事件发送快
+        if (!this.newEventsList.isEmpty()) {
+            collector.emit(new Values(this.newEventsList));
+            this.newEventsList.clear();
         }
     }
 
