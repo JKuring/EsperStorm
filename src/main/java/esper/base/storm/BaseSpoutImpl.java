@@ -70,7 +70,7 @@ public abstract class BaseSpoutImpl<T, E> extends BaseRichSpout implements BaseS
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
         logger.info("project.spout.tuple.name: "+ this.spoutTupleName);
-        declarer.declare(new Fields(spoutTupleName));
+        declarer.declare(new Fields("esperspoutdata"));
     }
 
     abstract public void fetchTuple(Queue dataQueue) throws Exception;

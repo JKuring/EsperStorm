@@ -1,15 +1,19 @@
 package esper.base.storm;
 
+import com.espertech.esper.client.EPRuntime;
+
 /**
  * Created by linghang.kong on 2016/7/5.
  */
 public interface BaseBolt<T> {
 
-    //public T analyzeTuple(String epl);
+    public EPRuntime getEPRuntime(String eplName, String epl, String listenerName);
 
-    public String getEpl();
+    public T analyzeTuple(String epl);
 
-    public void setEpl(String epl);
+    public String getEplStatement();
+
+    public void setEplStatement(String eplStatement);
 
     public String getBoltName();
 

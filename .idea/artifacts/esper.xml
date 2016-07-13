@@ -2,9 +2,6 @@
   <artifact type="jar" build-on-make="true" name="esper">
     <output-path>E:/workJAR/esper</output-path>
     <root id="archive" name="esper.jar">
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="E:/workJAR/esper/META-INF/MANIFEST.MF" />
-      </element>
       <element id="module-output" name="esper" />
       <element id="extracted-dir" path="$USER_HOME$/.m2/repository/log4j/apache-log4j-extras/1.2.17/apache-log4j-extras-1.2.17.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/.m2/repository/org/apache/hive/hive-serde/1.1.0/hive-serde-1.1.0.jar" path-in-jar="/" />

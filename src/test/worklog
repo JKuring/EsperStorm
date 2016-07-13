@@ -4,8 +4,12 @@
 
 任务：
 1、Listener 没有实现，具体实现思路写在PersonMap.prepare()的注释中了。
-2、BaseBoltImpl中配置参数没有写完，execute()方法没有写完，写完后把需要的方法定义在bolt的接口中。
-3、动态定义一个epl的Map对象，并能够与epl语句对应起来。
+2、BaseBoltImpl中配置参数没有写完，execute()方法没有写完，写完后把需要的方法定义在bolt的接口中。执行中。。。
+3、在EsperDataMap中动态定义一个epl的Map对象，并能够与epl语句对应起来。使用zk。
 
 注意：
 1、在定义bolt的时候，把需要epl定义的东西都写在yaml的config中
+
+
+问题：
+1、spout里面的declare不能使用conf的配置数据，可以以后直实例化的时候读zk的数据。目前先直接写参数。暂放

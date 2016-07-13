@@ -61,8 +61,4 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_3" default="false" assert-keyword="false" jdk-15="false" project-jdk-name="1.7" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
-  <component name="SvnConfiguration" myUseAcceleration="nothing">
-    <configuration useDefault="false">C:\Users\linghang.kong\AppData\Roaming\Subversion</configuration>
-    <option name="runUnderTerminal" value="true" />
-  </component>
 </project>

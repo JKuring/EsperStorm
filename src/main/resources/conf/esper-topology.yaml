@@ -17,14 +17,18 @@ config:
 
 
   project.spout.threads.file: 1
-  project.spout.tuple.name: "esperspoutdata"
-  project.bolt.tuple.name: "esperboltdata"
 
   project.activemq.broker.mqURL: "tcp://10.221.247.23:61616"
   project.activemq.name: "ActiveMQ"
   project.activemq.queue.name: "Q_EVENT_PMCA_FILE"
 
+  # zk data
+  project.spout.tuple.name: "esperspoutdata"
+  project.bolt.tuple.name: "esperboltdata"
+
   project.esper.map.name: "Person"
+  project.esper.eplStatement.name: "select"
+  project.esper.eplStatement.statement: "select irstream name, age from Person.win:time(1 sec) where name !="""
 
   #worker.childopts: "-Xmx3g"
   #topology.metrics.consumer.register:

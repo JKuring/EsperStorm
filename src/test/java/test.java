@@ -1,6 +1,6 @@
 import com.espertech.esper.client.EPRuntime;
 import esper.bean.Person;
-import esper.ep.PersonMap;
+import esper.ep.EsperDataMap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,10 +17,10 @@ public class test {
         String where  = "name !=\"\"";
         String select = "name, age";
 
-        PersonMap personMap = new PersonMap();
-        personMap.setEpl("select","select irstream name, age from Person.win:time(1 sec) where name !=\"\"");
-        personMap.createListener("select");
-        EPRuntime epRuntime = personMap.getEPRuntime();
+        EsperDataMap esperDataMap = new EsperDataMap();
+        esperDataMap.setEpl("select","select irstream name, age from Person.win:time(1 sec) where name !=\"\"");
+        esperDataMap.createListener("select");
+        EPRuntime epRuntime = esperDataMap.getEPRuntime();
 
         // POJO
         /*
