@@ -1,0 +1,9 @@
+config:
+    topology.kryo.register:
+        - com.eastcom.csfb.data.ltesignal.LteS1Mme: com.eastcom.csfb.data.ltesignal.serializer.LteS1MmeSerializer
+        - com.eastcom.csfb.data.ltesignal.LteSGs: com.eastcom.csfb.data.ltesignal.serializer.LteSgsSerializer
+        - com.eastcom.csfb.data.mc.McCallEvent: com.eastcom.csfb.data.mc.serializer.McCallSerializer
+        - com.eastcom.csfb.data.mc.McLocationUpdate: com.eastcom.csfb.data.mc.serializer.McLocationUpdateSerializer
+        - com.eastcom.csfb.data.mc.McPaging: com.eastcom.csfb.data.mc.serializer.McPagingSerializer
+        #- java.util.LinkedHashMap: com.eastcom.csfb.storm.base.common.LinkedHashMapSerializer
+        - java.util.LinkedHashMap: com.esotericsoftware.kryo.serializers.MapSerializer

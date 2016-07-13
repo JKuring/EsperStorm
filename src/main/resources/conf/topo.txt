@@ -1,0 +1,1 @@
+./storm jar ../target/esper.jar org.apache.storm.flux.Flux --remote ../flux/esper-topology.yaml

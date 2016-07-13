@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<database-reference name="xdr_data">
+    <!-- For a complete list of properties see Apache DBCP. -->
+    <!-- NOTE: "dbcp2" applies to api-2.0 of DBCP, use "dbcp" otherwise. -->
+    <datasourcefactory-connection classname="
+org.apache.commons.dbcp2.BasicDataSourceFactory">
+        <env-property name="username" value ="ipms"/>
+        <env-property name="password" value =""/>
+        <env-property name="driverClassName" value ="org.apache.hive.jdbc.HiveDriver"/>
+        <env-property name="mqURL" value ="jdbc:hive2://10.11.58.22:21050/xdr_data;auth=noSasl"/>
+        <env-property name="initialSize" value ="2"/>
+        <env-property name="validationQuery" value ="select 1 from o_se_ur_csfb_session limit 1"/>
+    </datasourcefactory-connection>
+    <connection-lifecycle value="pooled"/>
+</database-reference>

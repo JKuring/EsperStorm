@@ -1,0 +1,74 @@
+name: "esper-topology"
+
+config:
+  topology.workers: 60
+
+  topology.worker.childopts: "-server -Xms6g -Xmx6g -Xmn3g -XX:ParallelGCThreads=10"
+  topology.fall.back.on.java.serialization: false
+  topology.skip.missing.kryo.registrations: false
+  topology.acker.executors: 0
+  topology.executor.send.buffer.size: 2048
+  topology.executor.receive.buffer.size: 2048
+  topology.receiver.buffer.size: 64
+  topology.transfer.buffer.size: 8192
+  storm.messaging.netty.sync.mode: false
+  topology.buffer.size.limited: false
+
+
+
+  project.spout.threads.file: 1
+  project.spout.tuple.name: "esperspoutdata"
+  project.bolt.tuple.name: "esperboltdata"
+
+  project.activemq.broker.mqURL: "tcp://10.221.247.23:61616"
+  project.activemq.name: "ActiveMQ"
+  project.activemq.queue.name: "Q_EVENT_PMCA_FILE"
+
+  project.esper.map.name: "Person"
+
+  #worker.childopts: "-Xmx3g"
+  #topology.metrics.consumer.register:
+    #- class: "org.apache.storm.metric.LoggingMetricsConsumer"
+      #parallelism.hint: 1
+
+#includes:
+#  - resource: false
+#    file: "../flux/redisPool.yaml"
+#    override: false
+#  - resource: false
+#    file: "../flux/serializer.yaml"
+#    override: false
+#
+#topologySource:
+#    className: "com.eastcom.csfb.storm.topo.CsfbTopology"
+#    methodName: "getCsfbTopology"
+
+# spout definitions
+spouts:
+  - id: "esperSpout"
+    className: "worker.CsfbSpout"
+    parallelism: 5
+
+# bolt definitions
+bolts:
+  - id: "esperBolt1"
+    className: "worker.CsfbBolt"
+    parallelism: 5
+  #- id: "esperBolt2"
+   # className: "worker.CsfbBolt"
+    #parallelism: 1
+
+#stream definitions
+streams:
+  - name: "esperSpout --> esperBolt1" # name isn't used (placeholder for logging, UI, etc.)
+    from: "esperSpout"
+    to: "esperBolt1"
+    grouping:
+      type: FIELDS
+      args: ["esperspoutdata"]
+
+  #- name: "esperBolt1 --> esperBolt2"
+   # from: "esperBolt1"
+    #to: "esperBolt2"
+    #grouping:
+      #type: SHUFFLE

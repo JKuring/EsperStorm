@@ -1,0 +1,11 @@
+任务部分不分先后，看实际情况完成。
+先浏览注意部分，再继续任务。
+
+
+任务：
+1、Listener 没有实现，具体实现思路写在PersonMap.prepare()的注释中了。
+2、BaseBoltImpl中配置参数没有写完，execute()方法没有写完，写完后把需要的方法定义在bolt的接口中。
+3、动态定义一个epl的Map对象，并能够与epl语句对应起来。
+
+注意：
+1、在定义bolt的时候，把需要epl定义的东西都写在yaml的config中
