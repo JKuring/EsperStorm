@@ -50,13 +50,14 @@ public abstract class BaseBoltImpl<T> extends BaseRichBolt implements BaseBolt  
         this.eplName = (String) stormConf.get("project.esper.eplStatement.name");
         this.eplStatement = (String) stormConf.get("project.esper.eplStatement.statement");
 
-        this.epRuntime = getEPRuntime(this.eplName, this.eplStatement,this.listenerName);
+        this.epRuntime = getEPRuntime(this.eplName, this.eplStatement,this.eventName,
+                this.listenerName,this.newEventsList,this.oldEventsList);
 
     }
 
     @Override
     public void execute(Tuple input) {
-        if (!this.newEventsList.isEmpty()) {
+        if (this.newEventsList !=null) {
             collector.emit(new Values(this.newEventsList));
             this.newEventsList.clear();
         }
@@ -65,7 +66,7 @@ public abstract class BaseBoltImpl<T> extends BaseRichBolt implements BaseBolt  
             epRuntime.sendEvent(spoutTuple,this.eventName);
         }
         // 担心线程处理没有事件发送快
-        if (!this.newEventsList.isEmpty()) {
+        if (this.newEventsList !=null) {
             collector.emit(new Values(this.newEventsList));
             this.newEventsList.clear();
         }
@@ -81,14 +82,14 @@ public abstract class BaseBoltImpl<T> extends BaseRichBolt implements BaseBolt  
 
     /**
      * Esper init
-     * @param epl EPL
+     * @param eplStatement EPL
      * @param listenerName listener name
      * @return EPRuntime
      */
-    public EPRuntime getEPRuntime(String eplName, String epl, String eventName,
-                                  String listenerName,List newEventsList,List oldEventsList){
+    public EPRuntime getEPRuntime(String eplName, String eplStatement, String eventName,
+                                  String listenerName, List newEventsList, List oldEventsList){
         EsperDataMap esperDataMap = new EsperDataMap(newEventsList,oldEventsList);
-        esperDataMap.setEpl(eplName,epl);
+        esperDataMap.setEpl(eplName, eplStatement);
         esperDataMap.setEventName(eventName);
         esperDataMap.createListener(listenerName);
         return esperDataMap.getEPRuntime();

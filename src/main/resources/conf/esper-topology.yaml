@@ -47,6 +47,7 @@ config:
 #    className: "com.eastcom.csfb.storm.topo.CsfbTopology"
 #    methodName: "getCsfbTopology"
 
+
 # spout definitions
 spouts:
   - id: "esperSpout"
