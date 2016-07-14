@@ -44,23 +44,23 @@ config:
 #    override: false
 #
 #topologySource:
-#    className: "com.eastcom.csfb.storm.topo.CsfbTopology"
+#    className: "com.eastcom.csfb.storm.topo.WorkerTopology"
 #    methodName: "getCsfbTopology"
 
 
 # spout definitions
 spouts:
   - id: "esperSpout"
-    className: "worker.CsfbSpout"
+    className: "worker.WorkerSpoutut"
     parallelism: 5
 
 # bolt definitions
 bolts:
   - id: "esperBolt1"
-    className: "worker.CsfbBolt"
+    className: "worker.WorkerBoltlt"
     parallelism: 5
   #- id: "esperBolt2"
-   # className: "worker.CsfbBolt"
+   # className: "worker.WorkerBoltlt"
     #parallelism: 1
 
 #stream definitions
