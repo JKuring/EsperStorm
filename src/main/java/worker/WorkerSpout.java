@@ -15,7 +15,7 @@ import java.util.Queue;
 /**
  * Created by linghang.kong on 2016/7/5.
  */
-public class CsfbSpout<E> extends BaseSpoutImpl {
+public class WorkerSpout<E> extends BaseSpoutImpl {
 
     private static final long WAITING_TIME = 100;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

@@ -10,8 +10,8 @@ import org.apache.storm.generated.InvalidTopologyException;
 /**
  * Created by linghang.kong on 2016/7/7.
  */
-public class CsfbTopology {
-    //private static final Logger logger = LoggerFactory.getLogger(CsfbTopology.class.getClass());
+public class WorkerTopology {
+    //private static final Logger logger = LoggerFactory.getLogger(WorkerTopology.class.getClass());
 
     public static void main(String[] args) throws InvalidTopologyException, AuthorizationException, AlreadyAliveException {
         System.out.println("开启 topology!");
@@ -26,9 +26,9 @@ public class CsfbTopology {
 
         /*
         // 单机模式
-        BaseTopology topology = new BaseTopology("CsfbSpout",null,1,1);
-        CsfbSpout csfbSpout = new CsfbSpout("tcp://10.221.247.23:61616","Q_EVENT_PMCA_FILE2","ActiveMQ",2);
-        CsfbBolt csfbBolt = new CsfbBolt();
+        BaseTopology topology = new BaseTopology("WorkerSpout",null,1,1);
+        WorkerSpout csfbSpout = new WorkerSpout("tcp://10.221.247.23:61616","Q_EVENT_PMCA_FILE2","ActiveMQ",2);
+        WorkerBolt csfbBolt = new WorkerBolt();
         // 本地模式用于开发、测试，模拟一个完整的集群模式
         LocalCluster cluster = new LocalCluster();
         cluster.submitTopology("esper-topology", config, topology.getEsperTopology(csfbSpout,csfbBolt));

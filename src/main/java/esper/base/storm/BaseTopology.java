@@ -47,8 +47,8 @@ public class BaseTopology {
         /*
         TopologyBuilder builder = new TopologyBuilder();
 
-        CsfbSpout csfbSpout = new CsfbSpout();
-        CsfbBolt csfbBolt = new CsfbBolt();
+        WorkerSpout csfbSpout = new WorkerSpout();
+        WorkerBolt csfbBolt = new WorkerBolt();
         builder.setSpout(spoutName, csfbSpout, spoutParallelism).setNumTasks(2);
         // bolt需要定制，但是如何定制呢？比如stream groupings,这个等测试完spout再说
         for (int i = 0; i < baseBoltImpl.length; i++) {
