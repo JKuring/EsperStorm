@@ -1,4 +1,4 @@
-import esper.utility.ImpalaConnector;
+import com.eastcom.utility.ImpalaConnector;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,12 +18,12 @@ public class sqltest {
         //Configuration config = new Configuration();
         //config.configure("");
         ImpalaConnector impalaConnector = new ImpalaConnector();
-        stmt= impalaConnector.getStatement();
+        stmt = impalaConnector.getStatement();
         ResultSet rs = stmt.executeQuery(SQL_STATEMENT);
         System.out.println("\n== Begin Query Results ======================");
         // print the results to the console
         while (rs.next()) {
-            System.out.println(rs.getLong("start_time")+" "+rs.getString(2));
+            System.out.println(rs.getLong("start_time") + " " + rs.getString(2));
         }
 
         System.out.println("== End Query Results =======================\n\n");

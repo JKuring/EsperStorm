@@ -3,9 +3,13 @@
 
 
 任务：
-1、Listener 没有实现，具体实现思路写在PersonMap.prepare()的注释中了。
+1、Listener 没有实现，单个EPL和listener。已完成
 2、BaseBoltImpl中配置参数没有写完，execute()方法没有写完，写完后把需要的方法定义在bolt的接口中。已完成
-3、在EsperDataMap中动态定义一个epl的Map对象，并能够与epl语句对应起来。使用zk。
+3、在EsperDataMap中动态定义一个epl的Map对象，并能够与epl语句对应起来。使用zk。执行中。。。卡在zk的使用,然后是数据对象工厂等。
+
+
+version 2：
+1、可以同时输入多个epl语句和对应监听，并且监听可以动态加载。
 
 注意：
 1、在定义bolt的时候，把需要epl定义的东西都写在yaml的config中

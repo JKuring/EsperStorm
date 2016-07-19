@@ -1,6 +1,6 @@
 import com.espertech.esper.client.EPRuntime;
-import esper.bean.Person;
-import esper.ep.EsperDataMap;
+import com.eastcom.data.bean.Person;
+import com.eastcom.data.EsperDataMap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,11 +14,11 @@ public class test {
     public static void main(String[] args) throws InterruptedException {
         String from = Person.class.getName();
         // 为什么第二次结果为零呢
-        String where  = "name !=\"\"";
+        String where = "name !=\"\"";
         String select = "name, age";
 
         EsperDataMap esperDataMap = new EsperDataMap();
-        esperDataMap.setEpl("select","select irstream name, age from Person.win:time(1 sec) where name !=\"\"");
+        esperDataMap.setEPLStatement("select", "select irstream name, age from Person.win:time(1 sec) where name !=\"\"");
         esperDataMap.createListener("select");
         EPRuntime epRuntime = esperDataMap.getEPRuntime();
 
@@ -46,15 +46,15 @@ public class test {
 
         // Map 热切换
         Map persons1 = new HashMap();
-        persons1.put("name","kong");
-        persons1.put("age",1);
-        epRuntime.sendEvent(persons1,"Person");
+        persons1.put("name", "kong");
+        persons1.put("age", 1);
+        epRuntime.sendEvent(persons1, "Person");
         sleep(2000);
 
         Map persons2 = new HashMap();
-        persons2.put("name","ling");
-        persons2.put("age",2);
-        epRuntime.sendEvent(persons2,"Person");
+        persons2.put("name", "ling");
+        persons2.put("age", 2);
+        epRuntime.sendEvent(persons2, "Person");
 
         sleep(2000);
 
