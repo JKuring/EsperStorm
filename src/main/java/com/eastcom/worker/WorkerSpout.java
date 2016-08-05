@@ -1,5 +1,6 @@
 package com.eastcom.worker;
 
+import com.eastcom.reader.Readable;
 import com.eastcom.reader.ReaderController;
 import com.eastcom.storm.BaseSpoutImpl;
 import com.eastcom.utility.mq.MQFactory;
@@ -27,7 +28,7 @@ public class WorkerSpout<E> extends BaseSpoutImpl {
             if (dataQueue == null) {
                 throw new Exception("Failed to get the Queue.");
             }
-            ReaderController readerController = new ReaderController();
+            Readable readable = new ReaderController();
 
             String url = super.getMqURL();
             String queueName = super.getQueueName();
@@ -40,7 +41,7 @@ public class WorkerSpout<E> extends BaseSpoutImpl {
                 message = getMessage(consumer);
                 if (message != null) {
                     // 此处为处理ftp文件，但是需要做到通用性，需优化
-                    BufferedReader bufferedReader = readerController.read(message);
+                    BufferedReader bufferedReader = readable.read(message);
                     while (bufferedReader.ready()) {
                         dataQueue.add(bufferedReader.readLine());
                     }

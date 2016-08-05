@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/esper.iml" filepath="$PROJECT_DIR$/esper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zk-utilities/zk-utilities.iml" filepath="$PROJECT_DIR$/zk-utilities/zk-utilities.iml" />
     </modules>
   </component>
 </project>

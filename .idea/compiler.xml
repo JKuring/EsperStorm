@@ -22,11 +22,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="esper" />
+        <module name="zk-utilities" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="data" target="1.5" />
       <module name="esper" target="1.7" />
+      <module name="storm" target="1.7" />
+      <module name="zk-utilities" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
