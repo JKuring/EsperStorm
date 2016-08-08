@@ -1,4 +1,4 @@
-package worker.WatcherAndCallback;
+package worker.watchercallback;
 
 import org.apache.zookeeper.AsyncCallback.DataCallback;
 import org.apache.zookeeper.KeeperException.Code;

@@ -7,8 +7,11 @@ import worker.bean.ControlledTrigger;
  */
 public interface ZookeeperController {
     /**
+     * The operation can send a context to a watcher by registered a watcher in it..
+     *
      * @param znode             Zookeeper path.
      * @param controlledTrigger Controlled trigger object.
+     * @param ctx               It is context that
      */
     public void getDataFromZK(String znode, ControlledTrigger controlledTrigger, Object ctx);
 

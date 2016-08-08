@@ -4,17 +4,20 @@ package worker;
 import org.apache.zookeeper.ZooKeeper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import worker.WatcherAndCallback.ZookeeperDataCallback;
 import worker.bean.ControlledTrigger;
+import worker.watchercallback.ZookeeperDataCallback;
 
 import java.io.IOException;
 
 /**
  * Created by linghang.kong on 2016/8/2.
+ * This class is controller of asynchronous operation. it include
+ * most of all common zk operations, getDataFromZK and so on, and
+ * this methods create an result in a ControlledTrigger object.
  */
 public class AsynchController implements ZookeeperController {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private static final Logger logger = LoggerFactory.getLogger(AsynchController.class);
 
     private ZooKeeper zooKeeper;
     private String zkHost;
@@ -31,6 +34,13 @@ public class AsynchController implements ZookeeperController {
         this.zookeeperDataCallback = new ZookeeperDataCallback();
     }
 
+    /**
+     * The operation can send a context to a watcher by registered a watcher in it..
+     *
+     * @param znode             Zookeeper path.
+     * @param controlledTrigger Controlled trigger object.
+     * @param ctx               It is context that
+     */
     @Override
     public void getDataFromZK(String znode, ControlledTrigger controlledTrigger, Object ctx) {
 
@@ -40,6 +50,12 @@ public class AsynchController implements ZookeeperController {
         this.zooKeeper.getData(znode, zookeeperDataCallback, zookeeperDataCallback, ctx);
     }
 
+    /**
+     * To see getDataFromZK(String znode, ControlledTrigger controlledTrigger, Object ctx)
+     *
+     * @param znode             Zookeeper path.
+     * @param controlledTrigger Controlled trigger object.
+     */
     public void getDataFromZk(String znode, ControlledTrigger controlledTrigger) {
         this.getDataFromZK(znode, controlledTrigger, null);
     }
