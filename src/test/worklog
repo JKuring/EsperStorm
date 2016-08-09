@@ -6,7 +6,7 @@
 1、Listener 没有实现，单个EPL和listener。已生成
 2、BaseBoltImpl中配置参数没有写完，execute()方法没有写完，写完后把需要的方法定义在bolt的接口中。已生成
 3、zk的模块化代码，要求：屏蔽watcher、callback的状态处理，重复监听，提供可触发的事件对象，初始化基础操作。已生成
-4、建立zk tree模型，模型中的路径配置需要写在yaml配置文件中，需要仔细设计。
+4、建立zk tree模型，模型中的路径配置需要写在yaml配置文件中，需要仔细设计。这部分用zk同步事务。
 5、在storm的各种组件中提供相应的zk操作，通过可触发事件对象判断是否更新epl列表，spout中提供zk初始化和反初始化。
 6、在EsperDataMap中动态定义一个epl的Map对象，并能够与epl语句对应起来。
 

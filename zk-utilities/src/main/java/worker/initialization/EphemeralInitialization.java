@@ -5,4 +5,5 @@ package worker.initialization;
  */
 public abstract class EphemeralInitialization implements ZNodeInitialization {
 
+
 }

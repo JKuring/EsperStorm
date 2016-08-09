@@ -45,14 +45,12 @@ public class AsynchController implements ZookeeperController {
     public void getDataFromZK(String znode, ControlledTrigger controlledTrigger, Object ctx) {
 
         logger.debug("getDataFromZK: " + znode + " data: " + controlledTrigger.getData() + " context: " + ctx);
-
         this.zookeeperDataCallback.setDataCallback(this.zooKeeper, znode, controlledTrigger);
         this.zooKeeper.getData(znode, zookeeperDataCallback, zookeeperDataCallback, ctx);
     }
 
     /**
-     * To see getDataFromZK(String znode, ControlledTrigger controlledTrigger, Object ctx)
-     *
+     * @see AsynchController#getDataFromZK(String, ControlledTrigger, Object)
      * @param znode             Zookeeper path.
      * @param controlledTrigger Controlled trigger object.
      */

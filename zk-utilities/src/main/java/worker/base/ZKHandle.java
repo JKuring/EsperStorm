@@ -35,15 +35,17 @@ public class ZKHandle {
      * @return ZooKeeper handle.
      * @throws IOException
      */
-    public ZooKeeper getZooKeeper() throws IOException {
+    public ZooKeeper getZooKeeper() throws IOException, InterruptedException {
         logger.debug("Get a Zookeeper handle.");
         if (zooKeeper == null) {
             synchronized (this.getClass()) {
                 BaseWather baseWather = new BaseWather();
                 // 这里没有指定会话id和密码，由客户端自行分配
                 this.zooKeeper = new ZooKeeper(zkHostPorts, this.timeout, baseWather);
+                // 服务器端创建connection需要的几乎最短时间。
+                Thread.sleep(200);
             }
-        }
+            }
         return this.zooKeeper;
     }
 
